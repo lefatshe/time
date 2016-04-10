@@ -1,0 +1,33 @@
+<!-- The example view -->
+<section ng-controller="ExampleController">
+	<!-- If the user is not authenticated show the authentication link -->
+	<div data-ng-show="!authentication.user" class="login">
+	  <div class="login-screen centered">
+         <img src="images/stop.jpeg" width="65px">
+         <p>You are not authourised to view this page</p>
+         <hr/>
+         	<a class="btn btn-default" href="/signin">Signin as Admin</a>
+      </div>
+	</div>
+
+
+
+
+
+	<!-- Otherwise, show the user details and application links -->
+	<div data-ng-show="authentication.user">
+		<nav ng-include="'example/views/navbar.client.view.html'"></nav>
+		<section ng-include="'example/views/wrapper.client.view.html'"></section>
+
+
+
+
+
+		<!-- <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>	
+		<a href="/signout">Signout</a>
+		<ul>
+			<li><a href="/#!/articles">List Articles</a></li>
+			<li><a href="/#!/articles/create">Create Article</a></li>
+		</ul> -->
+	</div>
+</section>

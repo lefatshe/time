@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Use the 'title' property to render a page title  -->
+	<title><%= title %></title>
+	<link rel="stylesheet" href="./styles/bootstrap/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/css/main.css" crossorigin="anonymous">
+</head>
+<body>
+	
+	<div class="margin">
+	  	<!-- Display flash messages  -->
+		<% for(var i in messages) { %>
+		   <div class="flash alert alert-warning"><%= messages[i] %></div>
+		<% } %>
+	</div>
+
+	<!-- Render the signin form  -->
+	<form action="/signin" method="post" class="login">
+		<div class="login-screen centered ">
+			<span class="logo form-group">
+				<img src="./images/wonder.png" width="70px">
+				<p>
+				<strong>Control Panel:Timeshare</storng>
+				</p>
+				<br/>
+			</span>
+			<div class="form-group">
+				<input class="form-control" type="text" name="username" placeholder="Username" />
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="password" name="password" placeholder="Password"/>
+			</div>
+			<div class="form-group">
+				<input class="btn btn-default" type="submit" value="Sign In" />
+			</div>
+		</div>
+	</form>
+
+	<!-- Render the OAuth authentication links  -->
+	<!-- <a href="/oauth/facebook">Sign in with Facebook</a>
+	<a href="/oauth/twitter">Sign in with Twitter</a>
+	<a href="/oauth/google">Sign in with Google</a> -->
+</body>
+</html>
