@@ -1,5 +1,6 @@
 <!-- The create article view -->
 <section data-ng-controller="ArticlesController">
+
 	<h1>Create New Timeshare</h1>
    <form data-ng-submit="create()" novalidate>
 
@@ -16,10 +17,14 @@
          <label for="title">Category</label>
          <div>
             <select data-ng-model="category">
-                 <option value="null">Category 1</option>
-                 <option value="null">Category 2</option>
-                 <option value="null">Category 3</option>
-                 <option value="null">Category 4</option>
+                 <option value="Top Attractions">Top Attractions</option>
+                 <option value="Adventures">Adventures</option>Top Attractions 
+                 <option value="Beaches">Beaches</option>
+                 <option value="Family Holidays">Family Holidays</option>
+                 <option value="Country Places">Country Places</option>
+                 <option value="Cultural Heritage">Cultural Heritage</option>
+                 <option value="Exciting Cities">Exciting Cities</option>
+                 <option value="Heritage Sites">Heritage Sites</option>
             </select>
          </div>
       </div>
@@ -29,10 +34,14 @@
          <label for="title">Province</label>
          <div>
             <select data-ng-model="province">
-                 <option value="null">Province 1</option>
-                 <option value="null">Province 2</option>
-                 <option value="null">Province 3</option>
-                 <option value="null">Province 4</option>
+                 <option value="Eastern Cape">Eastern Cape</option>
+                 <option value="Free State">Free State</option>
+                 <option value="Gauteng">Gauteng</option>
+                 <option value="Kwazulu-Natal">Kwazulu-Natal</option>
+                 <option value="Limpopo">Limpopo</option>
+                 <option value="North West">North West</option>
+                 <option value="Northern Cape">Northern Cape</option>
+                 <option value="Western cape">Western Cape</option>
             </select>
          </div>
       </div>
@@ -46,11 +55,218 @@
       </div>
 
       <h3>Images</h3>
+<div id="frame">
+
+      <h1>Flow.js</h1>
+      <p>It's a JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API.</p>
+
+      <p>The library is designed to introduce fault-tolerance into the upload of large files through HTTP. This is done by splitting each files into small chunks; whenever the upload of a chunk fails, uploading is retried until the procedure completes. This allows uploads to automatically resume uploading after a network connection is lost either locally or to the server. Additionally, it allows for users to pause and resume uploads without loosing state.</p>
+
+      <p>Flow.js relies on the HTML5 File API and the ability to chunks files into smaller pieces. Currently, this means that support is limited to Firefox 4+ and Chrome 11+.</p>
+
+      <hr/>
+
+      <h3>Demo</h3>
+      
+      
+
+      <div class="flow-error">
+        Your browser, unfortunately, is not supported by Flow.js. The library requires support for <a href="http://www.w3.org/TR/FileAPI/">the HTML5 File API</a> along with <a href="http://www.w3.org/TR/FileAPI/#normalization-of-params">file slicing</a>.
+      </div>
+
+      <div class="flow-drop" ondragenter="jQuery(this).addClass('flow-dragover');" ondragend="jQuery(this).removeClass('flow-dragover');" ondrop="jQuery(this).removeClass('flow-dragover');">
+        Drop files here to upload or <a class="flow-browse-folder"><u>select folder</u></a> or <a class="flow-browse"><u>select from your computer</u></a> or <a class="flow-browse-image"><u>select images</u></a>
+      </div>
+      
+      <div class="flow-progress">
+        <table>
+          <tr>
+            <td width="100%"><div class="progress-container"><div class="progress-bar"></div></div></td>
+            <td class="progress-text" nowrap="nowrap"></td>
+            <td class="progress-pause" nowrap="nowrap">
+              <a href="#" onclick="r.upload(); return(false);" class="progress-resume-link"><img src="resume.png" title="Resume upload" /></a>
+              <a href="#" onclick="r.pause(); return(false);" class="progress-pause-link"><img src="pause.png" title="Pause upload" /></a>
+              <a href="#" onclick="r.cancel(); return(false);" class="progress-cancel-link"><img src="cancel.png" title="Cancel upload" /></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      
+      <ul class="flow-list"></ul>
+
+      <script>
+        (function () {
+          var r = new Flow({
+            target: 'upload',
+            chunkSize: 1024*1024,
+            testChunks: false
+          });
+
+          // Flow.js isn't supported, fall back on a different method
+          if (!r.support) {
+            $('.flow-error').show();
+            return ;
+          }
+
+          // Show a place for dropping/selecting files
+          $('.flow-drop').show();
+          r.assignDrop($('.flow-drop')[0]);
+          r.assignBrowse($('.flow-browse')[0]);
+          r.assignBrowse($('.flow-browse-folder')[0], true);
+          r.assignBrowse($('.flow-browse-image')[0], false, false, {accept: 'image/*'});
+
+          // Handle file add event
+          r.on('fileAdded', function(file){
+            // Show progress bar
+            $('.flow-progress, .flow-list').show();
+            // Add the file to the list
+            $('.flow-list').append(
+
+              '<li class="flow-file flow-file-'+file.uniqueIdentifier+'">' +
+              'Uploading <span class="flow-file-name"></span> ' +
+              '<span class="flow-file-size"></span> ' +
+              '<span class="flow-file-progress"></span> ' +
+              '<div class="flow-file-download" ng-model-data="images">'+file.uniqueIdentifier+'</div>' +
+              '<a href="" class="flow-file-download" target="_blank">' +
+              'Download' +
+              '</a> ' +
+              '<span class="flow-file-pause">' +
+              ' <img src="pause.png" title="Pause upload" />' +
+              '</span>' +
+              '<span class="flow-file-resume">' +
+              ' <img src="resume.png" title="Resume upload" />' +
+              '</span>' +
+              '<span class="flow-file-cancel">' +
+              ' <img src="cancel.png" title="Cancel upload" />' +
+              '</span>'
+            );
+            var $self = $('.flow-file-'+file.uniqueIdentifier);
+            $self.find('.flow-file-name').text(file.name);
+            $self.find('.flow-file-size').text(readablizeBytes(file.size));
+            $self.find('.flow-file-download').attr('href', '/download/' + file.uniqueIdentifier).hide();
+            $self.find('.flow-file-pause').on('click', function () {
+              file.pause();
+              $self.find('.flow-file-pause').hide();
+              $self.find('.flow-file-resume').show();
+            });
+            $self.find('.flow-file-resume').on('click', function () {
+              file.resume();
+              $self.find('.flow-file-pause').show();
+              $self.find('.flow-file-resume').hide();
+            });
+            $self.find('.flow-file-cancel').on('click', function () {
+              file.cancel();
+              $self.remove();
+            });
+          });
+
+          r.on('filesSubmitted', function(file) {
+            r.upload();
+          });
+
+          r.on('complete', function(){
+            // Hide pause/resume when the upload has completed
+            $('.flow-progress .progress-resume-link, .flow-progress .progress-pause-link').hide();
+          });
+
+          r.on('fileSuccess', function(file,message){
+            var $self = $('.flow-file-'+file.uniqueIdentifier);
+            // Reflect that the file upload has completed
+            $self.find('.flow-file-progress').text('(completed)');
+            $self.find('.flow-file-pause, .flow-file-resume').remove();
+            $self.find('.flow-file-download').attr('href', '/download/' + file.uniqueIdentifier).show();
+            //var text = $('input#uploaded-img');
+            //var ids = new Array();
+              var input = $('input#uploaded-img');
+              var urls = [];
+              // add links to array
+              $('a.flow-file-download').each(function(){
+                  urls.push($(this).attr('href'));// Store the URLs from the links...
+                  input.val(urls);
+                  input.trigger('input');
+              });
+          });
+
+          r.on('fileError', function(file, message){
+            // Reflect that the file upload has resulted in error
+            $('.flow-file-'+file.uniqueIdentifier+' .flow-file-progress').html('(file could not be uploaded: '+message+')');
+          });
+
+          r.on('fileProgress', function(file){
+            // Handle progress for both the file and the overall upload
+            $('.flow-file-'+file.uniqueIdentifier+' .flow-file-progress')
+              .html(Math.floor(file.progress()*100) + '% '
+                + readablizeBytes(file.averageSpeed) + '/s '
+                + secondsToStr(file.timeRemaining()) + ' remaining') ;
+            $('.progress-bar').css({width:Math.floor(r.progress()*100) + '%'});
+          });
+
+          r.on('uploadStart', function(){
+            // Show pause, hide resume
+            $('.flow-progress .progress-resume-link').hide();
+            $('.flow-progress .progress-pause-link').show();
+          });
+
+          r.on('catchAll', function() {
+            console.log.apply(console, arguments);
+          });
+          
+          window.r = {
+            pause: function () {
+              r.pause();
+              // Show resume, hide pause
+              $('.flow-file-resume').show();
+              $('.flow-file-pause').hide();
+              $('.flow-progress .progress-resume-link').show();
+              $('.flow-progress .progress-pause-link').hide();
+            },
+            cancel: function() {
+              r.cancel();
+              $('.flow-file').remove();
+            },
+            upload: function() {
+              $('.flow-file-pause').show();
+              $('.flow-file-resume').hide();
+              r.resume();
+            },
+            flow: r
+          };
+        })();
+
+        function readablizeBytes(bytes) {
+          var s = ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB'];
+          var e = Math.floor(Math.log(bytes) / Math.log(1024));
+          return (bytes / Math.pow(1024, e)).toFixed(2) + " " + s[e];
+        }
+        function secondsToStr (temp) {
+          function numberEnding (number) {
+            return (number > 1) ? 's' : '';
+          }
+          var years = Math.floor(temp / 31536000);
+          if (years) {
+            return years + ' year' + numberEnding(years);
+          }
+          var days = Math.floor((temp %= 31536000) / 86400);
+          if (days) {
+            return days + ' day' + numberEnding(days);
+          }
+          var hours = Math.floor((temp %= 86400) / 3600);
+          if (hours) {
+            return hours + ' hour' + numberEnding(hours);
+          }
+          var minutes = Math.floor((temp %= 3600) / 60);
+          if (minutes) {
+            return minutes + ' minute' + numberEnding(minutes);
+          }
+          var seconds = temp % 60;
+          return seconds + ' second' + numberEnding(seconds);
+        }
+      </script>
 
       <div>
          <label for="title">Image</label>
          <div>
-            <input type="text" data-ng-model="images" id="title" placeholder="Image" required>
+            <input type="text" data-ng-model="images"  id="uploaded-img" placeholder="Image">
          </div>
       </div>
 
@@ -59,7 +275,17 @@
       <div>
          <label for="title">Attractions</label>
          <div>
-            <input type="text" data-ng-model="attractions" id="title" placeholder="Attractions" required>
+            <select multiple="multiple" id="my-attractions" name="my-attractions[]" data-ng-model="attractions">
+              <option value='Golf'>Golf</option>
+              <option value='Gym'>Gym</option>
+              <option value='Horse riding'>Horse riding</option>
+              <option value='Restaurants'>Restaurants</option>
+              <option value='Sail/Boating'>Sail/Boating</option>
+              <option value='Tennis court'>Tennis court</option>
+              <option value='Swimming pool'>Swimming pool</option>
+              <option value='Fishing'>Fishing</option>
+              <option value='​Beach'>​Beach</option>
+            </select>
          </div>
       </div>
 
@@ -67,7 +293,13 @@
       <div>
          <label for="title">Nearby</label>
          <div>
-            <input type="text" data-ng-model="nearby" id="title" placeholder="Nearby" required>
+            <div>
+            <select data-ng-model="nearby" multiple="multiple" id="my-nearby" name="my-nearby[]" data-ng-model="nearby">
+              <option value='uShaka Marine World'>uShaka Marine World</option>
+              <option value='Snake park'>Snake park</option>
+              <option value='Hazelmere Dam'>Hazelmere Dam</option>
+            </select>
+         </div>
          </div>
       </div>
 
@@ -78,8 +310,8 @@
          <label for="title">Purchase</label>
          <div>
             <select data-ng-model="purchase">
-                 <option value="null">Rental</option>
-                 <option value="null">Buy</option>
+                 <option value="Rental">Rental</option>
+                 <option value="Buy">Buy</option>
             </select>
          </div>
       </div>
@@ -94,21 +326,24 @@
       <div>
          <label for="title">bedrooms</label>
          <div>
-            <input type="text" data-ng-model="bedrooms" id="title" placeholder="bedrooms" required>
+            <select data-ng-model="bedrooms">
+                 <option value="1">1 Bedroom</option>
+                 <option value="2">2 Bedroom</option>
+                 <option value="3">3 Bedroom</option>
+                 <option value="4">4 Bedroom</option>
+                 <option value="5">5 Bedroom</option>  
+                 <option value="6">more than 5</option>        
+            </select>
          </div>
       </div>
 
       <div>
          <label for="title">datemin</label>
          <div>
-            <input type="text" data-ng-model="datemin" id="title" placeholder="datemin" required>
-         </div>
-      </div>
-
-      <div>
-         <label for="title">datemax</label>
-         <div>
-            <input type="text" data-ng-model="datemax" id="title" placeholder="datemax" required>
+            <label for="from">From</label>
+            <input data-ng-model="datemin" type="text" id="from" name="from">
+            <label for="to">to</label>
+            <input data-ng-model="datemax" type="text" id="to" name="to">
          </div>
       </div>
 
@@ -119,8 +354,8 @@
          <label for="title">Make timeshare:</label>
          <div>
             <select data-ng-model="availability">
-                 <option value="null">availabile</option>
-                 <option value="null">ordered</option>      
+                 <option value="Availabile">availabile</option>
+                 <option value="Ordered">ordered</option>      
             </select>
          </div>
       </div>
@@ -129,8 +364,8 @@
          <label for="title">Are all timeshare details verified:</label>
          <div>
             <select data-ng-model="verify">
-                 <option value="null">Verified</option>
-                 <option value="null">pendinding</option>
+                 <option value="Verified">Verified</option>
+                 <option value="Pendinding">Pendinding</option>
             </select>
          </div>
       </div>
@@ -143,5 +378,33 @@
       <div data-ng-show="error">
          <strong data-ng-bind="error"></strong>
       </div>
+
+      <script>
+      $( document ).ready(function() {
+          $('#my-nearby').multiSelect();
+          $('#my-attractions').multiSelect();
+
+          $(function() {
+            $( "#from" ).datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 3,
+              onClose: function( selectedDate ) {
+                $( "#to" ).datepicker( "option", "minDate", selectedDate );
+              }
+            });
+            $( "#to" ).datepicker({
+              defaultDate: "+1w",
+              changeMonth: true,
+              numberOfMonths: 3,
+              onClose: function( selectedDate ) {
+                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+              }
+            });
+          });
+
+      });
+      </script>
+      
    </form>
 </section>

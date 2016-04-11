@@ -11,6 +11,8 @@ module.exports = function(app) {
 	app.route('/api/articles')
 	   .get(articles.list)
 	   .post(users.requiresLogin, articles.create);
+
+	   app.route('upload')
 	
 	// Set up the 'articles' parameterized routes
 	app.route('/api/articles/:articleId')

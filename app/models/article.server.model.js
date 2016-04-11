@@ -43,21 +43,20 @@ var ArticleSchema = new Schema({
 
       // Timeshare Images
       images: {
-        type: String,
-        default: '',
-        trim: true,
-        required: 'Images cannot be blank'
+        type: Array,
+        default : [],
+        trim: true
       }, 
 
       // Timeshare attractions
       attractions: {
-        type: String,
-        default: '',
+        type: Array,
+        default : [],
         trim: true
       }, 
       nearby: {
-        type: String,
-        default: '',
+        type: Array,
+        default : [],
         trim: true
       },
 
