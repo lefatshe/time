@@ -55,9 +55,9 @@ var ArticleSchema = new Schema({
         trim: true
       }, 
       nearby: {
-        type: Array,
-        default : [],
-        trim: true
+        type: String,
+        default: '',
+        trim: true,
       },
 
       // Timeshare purchase price & discription

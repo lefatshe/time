@@ -1,410 +1,279 @@
 <!-- The create article view -->
 <section data-ng-controller="ArticlesController">
+   <nav ng-include="'example/views/navbar.client.view.html'"></nav>
+   <div id="wrapper" >
+      <!-- Sidebar -->
+      <section ng-include="'example/views/sidebar.client.view.html'"></section>
+      <!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+         <div class="container-fluid">
+          <form data-ng-submit="create()" novalidate>
+            <div class="row">
+               <div class="col-lg-12">
+                  <h1 class="main-titles">Create New Timeshare</h1>
+                      <div class="tabs-wrap">
+                         <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                               <a href="#discriptions" aria-controls="discriptions" role="tab" data-toggle="tab" aria-expanded="true">Discriptions</a>
+                            </li>
+                            <li>
+                               <a href="#images" aria-controls="images" role="tab" data-toggle="tab" aria-expanded="false">Images</a>
+                            </li>
+                            <li>
+                               <a href="#attractions" aria-controls="attractions" role="tab" data-toggle="tab" aria-expanded="false">Attractions & Nearby</a>
+                            </li>
+                            <li>
+                               <a href="#pricing" aria-controls="pricing" role="tab" data-toggle="tab" aria-expanded="false">Pricing</a>
+                            </li>
+                         </ul>
+                         <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="discriptions">
+                              <div class="panel-area">
+                               <h3 class="panel-title-2">Provide timeshare discriptions</h3>
+                               <div class="row">
+                                   <div class="col-md-4">
+                                      <input class="form-control" type="text" data-ng-model="title" id="title" placeholder="Title" required>
+                                   </div>
+                                   <div class="col-md-4">
+                                      <div>
+                                        <select class="form-control" data-ng-model="category">
+                                             <option value="" disabled selected>Choose Timeshare catergory</option>
+                                             <option value="Top Attractions">Top Attractions</option>
+                                             <option value="Adventures">Adventures</option>Top Attractions 
+                                             <option value="Beaches">Beaches</option>
+                                             <option value="Family Holidays">Family Holidays</option>
+                                             <option value="Country Places">Country Places</option>
+                                             <option value="Cultural Heritage">Cultural Heritage</option>
+                                             <option value="Exciting Cities">Exciting Cities</option>
+                                             <option value="Heritage Sites">Heritage Sites</option>
+                                        </select>
+                                      </div>
+                                   </div>
+                                   <div class="col-md-4">
+                                      <select class="form-control" data-ng-model="province">
+                                           <option value="" disabled selected>Select Timeshare Province</option>
+                                           <option value="Eastern Cape">Eastern Cape</option>
+                                           <option value="Free State">Free State</option>
+                                           <option value="Gauteng">Gauteng</option>
+                                           <option value="Kwazulu-Natal">Kwazulu-Natal</option>
+                                           <option value="Limpopo">Limpopo</option>
+                                           <option value="North West">North West</option>
+                                           <option value="Northern Cape">Northern Cape</option>
+                                           <option value="Western cape">Western Cape</option>
+                                      </select>
+                                   </div>
+                                   <div class="col-md-12 row-follow">
+                                   <textarea class="form-control" data-ng-model="discription" id="content" cols="30" rows="10" placeholder="Provide of the timeshare discription"></textarea> </div>                      
+                                </div>
+                              </div>
+                                <div class="form-group">
+                                  <a class="btn btn-primary continue pull-right">Continue</a>
+                                </div>
+                            </div>
 
-	<h1>Create New Timeshare</h1>
-   <form data-ng-submit="create()" novalidate>
 
-      <h3>Timeshare discriptions</h3>
+                            <!-- Images -->
+                            <div role="tabpanel" class="tab-pane" id="images">
+                              <div class="panel-area">
+                              <h3 class="panel-title-2">Drag & drop images</h3>
+                              <div class="row">
+                                   <div class="col-md-12">
+                                      <div id="frame">
+                                          <div class="flow-error alert alert-warning">
+                                             Your browser, unfortunately, is not supported by Flow.js. The library requires support for <a href="http://www.w3.org/TR/FileAPI/">the HTML5 File API</a> along with <a href="http://www.w3.org/TR/FileAPI/#normalization-of-params">file slicing</a>.
+                                          </div>
 
-      <div>
-         <label for="title">Title</label>
-         <div>
-            <input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+                                          <div class="flow-drop form-control" ondragenter="jQuery(this).addClass('flow-dragover');" ondragend="jQuery(this).removeClass('flow-dragover');" ondrop="jQuery(this).removeClass('flow-dragover');">
+                                             Drop files here to upload or <a class="flow-browse-folder"><u>select folder</u></a> or <a class="flow-browse"><u>select from your computer</u></a> or <a class="flow-browse-image"><u>select images</u></a>
+                                          </div>
+
+                                          <div class="flow-progress">
+                                             <table>
+                                                <tr>
+                                                   <td width="100%">
+                                                      <div class="progress-container">
+                                                         <div class="progress-bar"></div>
+                                                      </div>
+                                                   </td>
+                                                   <td class="progress-text" nowrap="nowrap"></td>
+                                                   <td class="progress-pause" nowrap="nowrap">
+                                                      <a href="#" onclick="r.upload(); return(false);" class="progress-resume-link"><img src="resume.png" title="Resume upload" /></a>
+                                                      <a href="#" onclick="r.pause(); return(false);" class="progress-pause-link"><img src="pause.png" title="Pause upload" /></a>
+                                                      <a href="#" onclick="r.cancel(); return(false);" class="progress-cancel-link"><img src="cancel.png" title="Cancel upload" /></a>
+                                                   </td>
+                                                </tr>
+                                             </table>
+                                          </div>
+
+
+                                          <ul class="flow-list"></ul>
+
+
+                                         <div class="row-follow">
+                                            <input class="form-control" type="text" data-ng-model="images"  id="uploaded-img" placeholder="Image(s) URI provided">
+                                         </div>
+                                      </div>
+
+                                   </div>
+                              </div>
+                              </div>
+                               <div class="form-group">
+                                  <a class="btn btn-primary continue pull-right">Continue</a>
+                                </div>
+                            </div>
+
+                            <!-- Attractions & nearby -->
+                            <div role="tabpanel" class="tab-pane" id="attractions">
+                              <div class="panel-area">
+                              <h3 class="panel-title-2">Attractions & Nearby</h3>
+                              <div class="row">
+                                   <div class="col-md-6">
+                                    <label for="title">Attractions</label>
+                                        <div>
+                                          <select multiple="multiple" id="my-attractions" name="my-attractions[]" data-ng-model="attractions">
+                                            <option value='Golf'>Golf</option>
+                                            <option value='Gym'>Gym</option>
+                                            <option value='Horse riding'>Horse riding</option>
+                                            <option value='Restaurants'>Restaurants</option>
+                                            <option value='Sail/Boating'>Sail/Boating</option>
+                                            <option value='Tennis court'>Tennis court</option>
+                                            <option value='Swimming pool'>Swimming pool</option>
+                                            <option value='Fishing'>Fishing</option>
+                                            <option value='​Beach'>​Beach</option>
+                                          </select>
+                                       </div>
+                                   </div>
+                              
+
+                              
+                                  <div class="col-md-6">
+                                    <label for="title">Nearby</label>
+                                      <div>
+                                        <textarea class="form-control" data-ng-model="nearby" id="content" cols="30" rows="10" placeholder="Nearby places"></textarea>
+                                      </div>
+                                  </div>
+
+                              </div>
+                            </div>
+                            
+                              <div class="form-group">
+                                  <a class="btn btn-primary continue pull-right">Continue</a>
+                              </div>
+                         </div>
+
+                          <!-- pricing -->
+                            <div role="tabpanel" class="tab-pane" id="pricing">
+                              <div class="panel-area">
+                                <h3 class="panel-title-2">Pricing</h3>
+                                <div class="row">
+                                   <div class="col-md-4">
+                                      <select class="form-control" data-ng-model="purchase">
+                                           <option value="" disabled selected>Type of timeshare purchase</option>
+                                           <option value="Rental">Rental</option>
+                                           <option value="Buy">Buy</option>
+                                      </select>
+                                   </div>
+                                   <div class="col-md-4">
+                                      <input class="form-control" type="text" data-ng-model="price" id="title" placeholder="Price" required>
+                                   </div>
+                                   <div class="col-md-4">
+                                      <select class="form-control" data-ng-model="bedrooms">
+                                           <option  value="" disabled selected>Bedrooms</option>
+                                           <option value="1">1 Bedroom</option>
+                                           <option value="2">2 Bedroom</option>
+                                           <option value="3">3 Bedroom</option>
+                                           <option value="4">4 Bedroom</option>
+                                           <option value="5">5 Bedroom</option>  
+                                           <option value="6">more than 5</option>        
+                                      </select>
+                                   </div>
+                                   <div class="col-md-12 row-follow">
+                                      <label class="col-md-2" for="from">Stay date from</label>
+                                        <div class="col-md-4">
+                                          <input placeholder="From" class="col-md-4 form-control" data-ng-model="datemin" type="text" id="from" name="from">
+                                        </div>
+
+                                      <label class="col-md-2" for="to">Till date to</label>
+                                        <div class="col-md-4">
+                                          <input placeholder="To" class="form-control" data-ng-model="datemax" type="text" id="to" name="to">
+                                        </div>
+                                   </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="alert alert-danger">
+                                      <strong>Office Use</strong>
+
+                                      <div class="row">
+                                         <div class="form-group row-follow">
+                                          <div data-ng-show="error">
+                                             <strong data-ng-bind="error"></strong>
+                                          </div>  
+
+                                          <div class="col-md-4">
+                                            <select class="form-control" data-ng-model="availability">
+                                              <option  value="" disabled selected>Select purchase status</option>
+                                               <option value="Availabile">Availabile</option>
+                                               <option value="Ordered">Ordered</option>      
+                                            </select>
+                                          </div>
+                                          <div class="col-md-4">
+                                              <select class="form-control" data-ng-model="verify">
+                                                <option  value="" disabled selected>Verification</option>
+                                                   <option value="Verified">Verified</option>
+                                                   <option value="Pendinding">Pendinding</option>
+                                              </select>
+                                          </div>
+
+                                          <div class="col-md-4">
+                                              <input class="btn btn-danger pull-right" type="submit">
+                                          </div>
+
+
+                                         </div>
+                                      </div>
+
+                                      
+                                    </div>
+                                </div>
+
+                                  
+                              </div>
+                            </div>
+
+                      </div>
+                      <div id="push"></div>
+
+
+                      <div class="form-group togglemenu">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                      </div>
+               </div>
+            </div>
+          </form>
          </div>
       </div>
-
-      <div>
-         <label for="title">Category</label>
-         <div>
-            <select data-ng-model="category">
-                 <option value="Top Attractions">Top Attractions</option>
-                 <option value="Adventures">Adventures</option>Top Attractions 
-                 <option value="Beaches">Beaches</option>
-                 <option value="Family Holidays">Family Holidays</option>
-                 <option value="Country Places">Country Places</option>
-                 <option value="Cultural Heritage">Cultural Heritage</option>
-                 <option value="Exciting Cities">Exciting Cities</option>
-                 <option value="Heritage Sites">Heritage Sites</option>
-            </select>
-         </div>
-      </div>
-
-
-      <div>
-         <label for="title">Province</label>
-         <div>
-            <select data-ng-model="province">
-                 <option value="Eastern Cape">Eastern Cape</option>
-                 <option value="Free State">Free State</option>
-                 <option value="Gauteng">Gauteng</option>
-                 <option value="Kwazulu-Natal">Kwazulu-Natal</option>
-                 <option value="Limpopo">Limpopo</option>
-                 <option value="North West">North West</option>
-                 <option value="Northern Cape">Northern Cape</option>
-                 <option value="Western cape">Western Cape</option>
-            </select>
-         </div>
-      </div>
-
-
-      <div>
-         <label for="content">Discription</label>
-         <div>
-            <textarea data-ng-model="discription" id="content" cols="30" rows="10" placeholder="Provide of the timeshare discription"></textarea>
-         </div>
-      </div>
-
-      <h3>Images</h3>
-<div id="frame">
-
-      <h1>Flow.js</h1>
-      <p>It's a JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API.</p>
-
-      <p>The library is designed to introduce fault-tolerance into the upload of large files through HTTP. This is done by splitting each files into small chunks; whenever the upload of a chunk fails, uploading is retried until the procedure completes. This allows uploads to automatically resume uploading after a network connection is lost either locally or to the server. Additionally, it allows for users to pause and resume uploads without loosing state.</p>
-
-      <p>Flow.js relies on the HTML5 File API and the ability to chunks files into smaller pieces. Currently, this means that support is limited to Firefox 4+ and Chrome 11+.</p>
-
-      <hr/>
-
-      <h3>Demo</h3>
-      
-      
-
-      <div class="flow-error">
-        Your browser, unfortunately, is not supported by Flow.js. The library requires support for <a href="http://www.w3.org/TR/FileAPI/">the HTML5 File API</a> along with <a href="http://www.w3.org/TR/FileAPI/#normalization-of-params">file slicing</a>.
-      </div>
-
-      <div class="flow-drop" ondragenter="jQuery(this).addClass('flow-dragover');" ondragend="jQuery(this).removeClass('flow-dragover');" ondrop="jQuery(this).removeClass('flow-dragover');">
-        Drop files here to upload or <a class="flow-browse-folder"><u>select folder</u></a> or <a class="flow-browse"><u>select from your computer</u></a> or <a class="flow-browse-image"><u>select images</u></a>
-      </div>
-      
-      <div class="flow-progress">
-        <table>
-          <tr>
-            <td width="100%"><div class="progress-container"><div class="progress-bar"></div></div></td>
-            <td class="progress-text" nowrap="nowrap"></td>
-            <td class="progress-pause" nowrap="nowrap">
-              <a href="#" onclick="r.upload(); return(false);" class="progress-resume-link"><img src="resume.png" title="Resume upload" /></a>
-              <a href="#" onclick="r.pause(); return(false);" class="progress-pause-link"><img src="pause.png" title="Pause upload" /></a>
-              <a href="#" onclick="r.cancel(); return(false);" class="progress-cancel-link"><img src="cancel.png" title="Cancel upload" /></a>
-            </td>
-          </tr>
-        </table>
-      </div>
-      
-      <ul class="flow-list"></ul>
-
+      <!-- /#page-content-wrapper -->
+      <!-- /#wrapper -->
+      <!-- Menu Toggle Script -->
       <script>
-        (function () {
-          var r = new Flow({
-            target: 'upload',
-            chunkSize: 1024*1024,
-            testChunks: false
-          });
-
-          // Flow.js isn't supported, fall back on a different method
-          if (!r.support) {
-            $('.flow-error').show();
-            return ;
-          }
-
-          // Show a place for dropping/selecting files
-          $('.flow-drop').show();
-          r.assignDrop($('.flow-drop')[0]);
-          r.assignBrowse($('.flow-browse')[0]);
-          r.assignBrowse($('.flow-browse-folder')[0], true);
-          r.assignBrowse($('.flow-browse-image')[0], false, false, {accept: 'image/*'});
-
-          // Handle file add event
-          r.on('fileAdded', function(file){
-            // Show progress bar
-            $('.flow-progress, .flow-list').show();
-            // Add the file to the list
-            $('.flow-list').append(
-
-              '<li class="flow-file flow-file-'+file.uniqueIdentifier+'">' +
-              'Uploading <span class="flow-file-name"></span> ' +
-              '<span class="flow-file-size"></span> ' +
-              '<span class="flow-file-progress"></span> ' +
-              '<div class="flow-file-download" ng-model-data="images">'+file.uniqueIdentifier+'</div>' +
-              '<a href="" class="flow-file-download" target="_blank">' +
-              'Download' +
-              '</a> ' +
-              '<span class="flow-file-pause">' +
-              ' <img src="pause.png" title="Pause upload" />' +
-              '</span>' +
-              '<span class="flow-file-resume">' +
-              ' <img src="resume.png" title="Resume upload" />' +
-              '</span>' +
-              '<span class="flow-file-cancel">' +
-              ' <img src="cancel.png" title="Cancel upload" />' +
-              '</span>'
-            );
-            var $self = $('.flow-file-'+file.uniqueIdentifier);
-            $self.find('.flow-file-name').text(file.name);
-            $self.find('.flow-file-size').text(readablizeBytes(file.size));
-            $self.find('.flow-file-download').attr('href', '/download/' + file.uniqueIdentifier).hide();
-            $self.find('.flow-file-pause').on('click', function () {
-              file.pause();
-              $self.find('.flow-file-pause').hide();
-              $self.find('.flow-file-resume').show();
-            });
-            $self.find('.flow-file-resume').on('click', function () {
-              file.resume();
-              $self.find('.flow-file-pause').show();
-              $self.find('.flow-file-resume').hide();
-            });
-            $self.find('.flow-file-cancel').on('click', function () {
-              file.cancel();
-              $self.remove();
-            });
-          });
-
-          r.on('filesSubmitted', function(file) {
-            r.upload();
-          });
-
-          r.on('complete', function(){
-            // Hide pause/resume when the upload has completed
-            $('.flow-progress .progress-resume-link, .flow-progress .progress-pause-link').hide();
-          });
-
-          r.on('fileSuccess', function(file,message){
-            var $self = $('.flow-file-'+file.uniqueIdentifier);
-            // Reflect that the file upload has completed
-            $self.find('.flow-file-progress').text('(completed)');
-            $self.find('.flow-file-pause, .flow-file-resume').remove();
-            $self.find('.flow-file-download').attr('href', '/download/' + file.uniqueIdentifier).show();
-            //var text = $('input#uploaded-img');
-            //var ids = new Array();
-              var input = $('input#uploaded-img');
-              var urls = [];
-              // add links to array
-              $('a.flow-file-download').each(function(){
-                  urls.push($(this).attr('href'));// Store the URLs from the links...
-                  input.val(urls);
-                  input.trigger('input');
-              });
-          });
-
-          r.on('fileError', function(file, message){
-            // Reflect that the file upload has resulted in error
-            $('.flow-file-'+file.uniqueIdentifier+' .flow-file-progress').html('(file could not be uploaded: '+message+')');
-          });
-
-          r.on('fileProgress', function(file){
-            // Handle progress for both the file and the overall upload
-            $('.flow-file-'+file.uniqueIdentifier+' .flow-file-progress')
-              .html(Math.floor(file.progress()*100) + '% '
-                + readablizeBytes(file.averageSpeed) + '/s '
-                + secondsToStr(file.timeRemaining()) + ' remaining') ;
-            $('.progress-bar').css({width:Math.floor(r.progress()*100) + '%'});
-          });
-
-          r.on('uploadStart', function(){
-            // Show pause, hide resume
-            $('.flow-progress .progress-resume-link').hide();
-            $('.flow-progress .progress-pause-link').show();
-          });
-
-          r.on('catchAll', function() {
-            console.log.apply(console, arguments);
-          });
-          
-          window.r = {
-            pause: function () {
-              r.pause();
-              // Show resume, hide pause
-              $('.flow-file-resume').show();
-              $('.flow-file-pause').hide();
-              $('.flow-progress .progress-resume-link').show();
-              $('.flow-progress .progress-pause-link').hide();
-            },
-            cancel: function() {
-              r.cancel();
-              $('.flow-file').remove();
-            },
-            upload: function() {
-              $('.flow-file-pause').show();
-              $('.flow-file-resume').hide();
-              r.resume();
-            },
-            flow: r
-          };
-        })();
-
-        function readablizeBytes(bytes) {
-          var s = ['bytes', 'kB', 'MB', 'GB', 'TB', 'PB'];
-          var e = Math.floor(Math.log(bytes) / Math.log(1024));
-          return (bytes / Math.pow(1024, e)).toFixed(2) + " " + s[e];
-        }
-        function secondsToStr (temp) {
-          function numberEnding (number) {
-            return (number > 1) ? 's' : '';
-          }
-          var years = Math.floor(temp / 31536000);
-          if (years) {
-            return years + ' year' + numberEnding(years);
-          }
-          var days = Math.floor((temp %= 31536000) / 86400);
-          if (days) {
-            return days + ' day' + numberEnding(days);
-          }
-          var hours = Math.floor((temp %= 86400) / 3600);
-          if (hours) {
-            return hours + ' hour' + numberEnding(hours);
-          }
-          var minutes = Math.floor((temp %= 3600) / 60);
-          if (minutes) {
-            return minutes + ' minute' + numberEnding(minutes);
-          }
-          var seconds = temp % 60;
-          return seconds + ' second' + numberEnding(seconds);
-        }
+         var url = "./script/create-article.js";
+         $.getScript(url);
+         
+         $('.continue').click(function(e){
+           e.preventDefault();
+             $('.nav-tabs > .active').next('li').find('a').trigger('click');
+         });
+         $('.back').click(function(e){
+           e.preventDefault();
+             $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+         });
+         
+         $("#menu-toggle").click(function(e) {
+           e.preventDefault();
+             $("#wrapper").toggleClass("toggled");
+         });
       </script>
-
-      <div>
-         <label for="title">Image</label>
-         <div>
-            <input type="text" data-ng-model="images"  id="uploaded-img" placeholder="Image">
-         </div>
-      </div>
-
-      <h3>Attractions & Nearby</h3>
-
-      <div>
-         <label for="title">Attractions</label>
-         <div>
-            <select multiple="multiple" id="my-attractions" name="my-attractions[]" data-ng-model="attractions">
-              <option value='Golf'>Golf</option>
-              <option value='Gym'>Gym</option>
-              <option value='Horse riding'>Horse riding</option>
-              <option value='Restaurants'>Restaurants</option>
-              <option value='Sail/Boating'>Sail/Boating</option>
-              <option value='Tennis court'>Tennis court</option>
-              <option value='Swimming pool'>Swimming pool</option>
-              <option value='Fishing'>Fishing</option>
-              <option value='​Beach'>​Beach</option>
-            </select>
-         </div>
-      </div>
-
-
-      <div>
-         <label for="title">Nearby</label>
-         <div>
-            <div>
-            <select data-ng-model="nearby" multiple="multiple" id="my-nearby" name="my-nearby[]" data-ng-model="nearby">
-              <option value='uShaka Marine World'>uShaka Marine World</option>
-              <option value='Snake park'>Snake park</option>
-              <option value='Hazelmere Dam'>Hazelmere Dam</option>
-            </select>
-         </div>
-         </div>
-      </div>
-
-
-      <h3>Purchases</h3>
-
-      <div>
-         <label for="title">Purchase</label>
-         <div>
-            <select data-ng-model="purchase">
-                 <option value="Rental">Rental</option>
-                 <option value="Buy">Buy</option>
-            </select>
-         </div>
-      </div>
-
-      <div>
-         <label for="title">Price</label>
-         <div>
-            <input type="text" data-ng-model="price" id="title" placeholder="Price" required>
-         </div>
-      </div>
-
-      <div>
-         <label for="title">bedrooms</label>
-         <div>
-            <select data-ng-model="bedrooms">
-                 <option value="1">1 Bedroom</option>
-                 <option value="2">2 Bedroom</option>
-                 <option value="3">3 Bedroom</option>
-                 <option value="4">4 Bedroom</option>
-                 <option value="5">5 Bedroom</option>  
-                 <option value="6">more than 5</option>        
-            </select>
-         </div>
-      </div>
-
-      <div>
-         <label for="title">datemin</label>
-         <div>
-            <label for="from">From</label>
-            <input data-ng-model="datemin" type="text" id="from" name="from">
-            <label for="to">to</label>
-            <input data-ng-model="datemax" type="text" id="to" name="to">
-         </div>
-      </div>
-
-      <hr/>
-      <h3>Office Use</h3>
-
-      <div>
-         <label for="title">Make timeshare:</label>
-         <div>
-            <select data-ng-model="availability">
-                 <option value="Availabile">availabile</option>
-                 <option value="Ordered">ordered</option>      
-            </select>
-         </div>
-      </div>
-
-      <div>
-         <label for="title">Are all timeshare details verified:</label>
-         <div>
-            <select data-ng-model="verify">
-                 <option value="Verified">Verified</option>
-                 <option value="Pendinding">Pendinding</option>
-            </select>
-         </div>
-      </div>
-
-
-
-      <div>
-         <input type="submit">
-      </div>
-      <div data-ng-show="error">
-         <strong data-ng-bind="error"></strong>
-      </div>
-
-      <script>
-      $( document ).ready(function() {
-          $('#my-nearby').multiSelect();
-          $('#my-attractions').multiSelect();
-
-          $(function() {
-            $( "#from" ).datepicker({
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 3,
-              onClose: function( selectedDate ) {
-                $( "#to" ).datepicker( "option", "minDate", selectedDate );
-              }
-            });
-            $( "#to" ).datepicker({
-              defaultDate: "+1w",
-              changeMonth: true,
-              numberOfMonths: 3,
-              onClose: function( selectedDate ) {
-                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-              }
-            });
-          });
-
-      });
-      </script>
-      
-   </form>
+   </div>
 </section>

@@ -1,5 +1,4 @@
-
-      
+$( document ).ready(function() {
           $('#my-nearby').multiSelect();
           $('#my-attractions').multiSelect();
 
@@ -22,9 +21,7 @@
             });
           });
 
-
-
-		(function () {
+          (function () {
           var r = new Flow({
             target: 'upload',
             chunkSize: 1024*1024,
@@ -190,5 +187,5 @@
           var seconds = temp % 60;
           return seconds + ' second' + numberEnding(seconds);
         }
-    
-     
+
+      });
