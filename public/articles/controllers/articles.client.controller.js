@@ -7,6 +7,12 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$routePa
     	// Expose the Authentication service
         $scope.authentication = Authentication;
 
+        $scope.mySplit = function(string, nb) {
+            var array = string.split(',');
+            
+            return array[nb];
+        }
+
         // Create a new controller method for creating new articles
         $scope.create = function() {
         	// Use the form fields to create a new article $resource object

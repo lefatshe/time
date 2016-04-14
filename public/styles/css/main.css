@@ -5,7 +5,11 @@
 .info {
     
 }
-
+.col-md-8.no-articles-found {
+    text-align: center;
+    font-weight: bold;
+    /* border: 1px solid; */
+}
 .pdefault {
     overflow: hidden;
     display: block;
@@ -16,11 +20,6 @@
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 
-.tab-content {
-    overflow: hidden;
-    height: 440px;
-}
-
 .panel-area {
     display: hidden;
     overflow: scroll;
@@ -28,9 +27,9 @@
 }
 
 .togglemenu {
-    display: block;
+    /*display: block;
     border-top: 1px solid #DDD;
-    padding-top: 10px;
+    padding-top: 10px;*/
 }
 
 

@@ -111,7 +111,7 @@
 
 
                                          <div class="row-follow">
-                                            <input class="form-control" type="text" data-ng-model="images"  id="uploaded-img" placeholder="Image(s) URI provided">
+                                            <input class="form-control" type="text" ng-list="," data-ng-model="images"  id="uploaded-img" placeholder="Image(s) URI provided">
                                          </div>
                                       </div>
 
@@ -150,7 +150,7 @@
                                   <div class="col-md-6">
                                     <label for="title">Nearby</label>
                                       <div>
-                                        <textarea class="form-control" data-ng-model="nearby" id="content" cols="30" rows="10" placeholder="Nearby places"></textarea>
+                                        <textarea class="form-control" ng-list="," data-ng-model="nearby" id="content" cols="30" rows="10" placeholder="Nearby places"></textarea>
                                       </div>
                                   </div>
 

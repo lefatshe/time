@@ -5,6 +5,7 @@
 module.exports = {
 	db: 'mongodb://127.0.0.1/dbase',
 	sessionSecret: 'developmentSessionSecret',
+	
 	facebook: {
 		clientID: 'Facebook Application ID',
 		clientSecret: 'Facebook Application Secret',
