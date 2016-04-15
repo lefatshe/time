@@ -15,13 +15,13 @@ angular.module('navbar').controller('NavCtrl', ['$scope', '$location',
             title: 'Site Posts',
             icon: 'images/letter.svg',
             clas: 'posts',
-            path: '/site-posts'
+            path: '/#!helloAdmin/'
         }, {
             id: 'item3',
             title: 'Upload Media',
             icon: 'images/up-arrow.svg',
             clas: 'media',
-            path: '/media'
+            path: '/#!helloAdmin/'
         }];
         
     }

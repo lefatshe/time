@@ -1,0 +1,18 @@
+<input type="text" data-ng-model="search.$">
+
+<div data-ng-controller="CustomerController">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Player</th>
+						<th>Position</th>
+						<th>Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="timeshare in timeshares | filter:search | orderBy:'name' | limitTo: 3">
+						<td>{{timeshare.title}}</td>
+					</tr>
+				</tbody>
+			</table>
+</div>

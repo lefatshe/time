@@ -1,1 +1,33 @@
-<h1>Welcome Customer</h1>
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+	<!-- Use the 'title' property to render a page title  -->
+	<title>Timeshare</title>
+	<link rel="stylesheet" href="./styles/bootstrap/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/css/styles.css" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	
+	<section ng-view></section>
+
+	
+  	
+	<script type="text/javascript" src="./lib/jquery.js"></script>
+	<!-- Load local libraries -->
+	<script type="text/javascript" src="./lib/angular/angular.js"></script>
+	<script type="text/javascript" src="./lib/angular-route/angular-route.js"></script>
+	<script type="text/javascript" src="./lib/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="./lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+	<!-- Load the customer module -->
+	<script type="text/javascript" src="./customer/customer.client.module.js"></script>
+	<script type="text/javascript" src="./customer/services/customer.client.service.js"></script>
+	<script type="text/javascript" src="./customer/controllers/customer.client.controller.js"></script>
+	<script type="text/javascript" src="./customer/config/customer.client.routes.js"></script>
+	
+
+	<!-- Bootstrap AngularJS application -->
+	<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
