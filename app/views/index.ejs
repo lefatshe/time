@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!-- Render AngularJS views  -->
-	<section ng-view></section>
+	<section id="wrapper" ng-view></section>
 
 	<!-- Render the user object -->
 	<script type="text/javascript">
@@ -45,6 +45,10 @@
 	<!-- Load the users module -->
 	<script type="text/javascript" src="./users/users.client.module.js"></script>
 	<script type="text/javascript" src="./users/services/authentication.client.service.js"></script>
+
+	<!-- Load navbar -->
+	<script type="text/javascript" src="./navbar/navbar.client.module.js"></script>
+	<script type="text/javascript" src="./navbar/controllers/navbar.client.controller.js"></script>
 
 	<!-- Bootstrap AngularJS application -->
 	<script type="text/javascript" src="flow.js"></script>

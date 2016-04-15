@@ -1,10 +1,7 @@
 <!-- The article view -->
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-   <nav ng-include="'example/views/navbar.client.view.html'"></nav>
-   <div id="wrapper" >
       <!-- Sidebar -->
-      <section ng-include="'example/views/sidebar.client.view.html'">
-      </section>
+      <section ng-include="'navbar/views/navbar.client.view.html'"></section>
       <!-- Page Content -->
       <div id="page-content-wrapper">
          <div class="container-fluid">
@@ -89,7 +86,6 @@
          <hr/>
          <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
       </div>
-   </div>
    </div>
    </div>
    </div>

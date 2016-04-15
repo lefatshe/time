@@ -1,9 +1,7 @@
 <!-- The create article view -->
 <section data-ng-controller="ArticlesController">
-   <nav ng-include="'example/views/navbar.client.view.html'"></nav>
-   <div id="wrapper" >
       <!-- Sidebar -->
-      <section ng-include="'example/views/sidebar.client.view.html'"></section>
+      <section ng-include="'navbar/views/navbar.client.view.html'"></section>
       <!-- /#sidebar-wrapper -->
       <!-- Page Content -->
       <div id="page-content-wrapper">
@@ -275,5 +273,4 @@
              $("#wrapper").toggleClass("toggled");
          });
       </script>
-   </div>
 </section>

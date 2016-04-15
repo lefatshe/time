@@ -1,3 +1,30 @@
+/*  Navbar */
+
+/* prevent menu drop */
+input.ng-pristine.ng-untouched.ng-valid.ng-not-empty,
+#inner-editor {
+    background: transparent !important;
+    border: none !important;
+}
+
+ul.navigation li {
+    
+}
+ul.navigation li.active {
+    
+}
+.highlightOne {
+    
+}
+.navigation {
+    
+}
+
+section#wrapper {
+    margin-top: 50px;
+}
+
+
 .images.img-thumbnail{
     width:200px;
     float:left;
@@ -133,7 +160,8 @@ li.sidebar-item {
     cursor: pointer;
 }
 
-.selection {
+.selection,
+ul.navigation li.active  {
     background: #116cd6 !important;
     color: white !important;
 }
@@ -304,7 +332,7 @@ li.sidebar-brand {
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #FFF;
 }
 
 .sidebar-nav li a:hover {

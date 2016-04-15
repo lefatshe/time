@@ -1,4 +1,4 @@
-<div id="sidebar-wrapper">
+<!-- <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li class="sidebar-brand">
                Dashboard
@@ -16,3 +16,30 @@
 </div>
 
 
+ -->
+
+<!--  <ul ng-controller="NavCtrl" class="menu">
+    <li ng-repeat="item in items" ng-class="{active: isActive(item)}"><a href="#{{item.path}}">{{item.title}}</a></li>
+  </ul>
+  <div ng-view></div>
+  
+<script>
+'use strict';
+angular.module('myApp.controllers', []).
+  controller('NavCtrl', ['$scope', '$location', function($scope, $location) {
+    $scope.items = [
+      {path: '/view1', title: 'View 1'},
+      {path: '/view2', title: 'View 2'},
+    ];
+    $scope.isActive = function(item) {
+      if (item.path == $location.path()) {
+        return true;
+      }
+      return false;
+    };
+  }])
+  .controller('MyCtrl1', [function() {
+  }])
+  .controller('MyCtrl2', [function() {
+  }]);
+</script> -->
