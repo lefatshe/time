@@ -1,61 +1,102 @@
 <!-- The article view -->
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-
    <nav ng-include="'example/views/navbar.client.view.html'"></nav>
-
    <div id="wrapper" >
       <!-- Sidebar -->
       <section ng-include="'example/views/sidebar.client.view.html'">
       </section>
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="main-titles">Timeshare Saved!!!</h1>
-
-                        <ul class="nav nav-tabs" id="myTab">
-                                <li class="active">
-                                    <a data-target="#overview" data-toggle="tab"><strong data-ng-bind="article.title"></strong></a>
-                                </li>
-                                </ul>
-
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="overview">
-                                   <div data-ng-show="authentication.user._id == article.creator._id">
-                            <a href="/#!/articles/{{article._id}}/edit">edit</a>
-                            <a href="#" data-ng-click="delete();">delete</a>
-                        </div>
-                        <small>
-                            <em>Posted on</em>
-                            <em data-ng-bind="article.created | date:'mediumDate'"></em>
-                            <em>by</em>
-                            <em data-ng-bind="article.creator.fullName"></em>
-                        </small>
-                        <p data-ng-bind="article.content"></p>
-                                </div>
-
-                           
-                        </div>
-
-
-                    
-                        <!-- Show the editing buttons to the article creator -->
-                        
-                        
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="form-group">
+                  <div class="alert alert-success center">
+                     <strong>{{article.title}}</strong> saved with id <strong>{{article._id}}</strong>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <!-- <h1 class="main-titles">Timeshare Created</h1> -->
+                  <div class="cntrl-btn pull-right">
+                     <a href="#" data-ng-click="delete();" class="btn btn-primary">Delete</a>
+                     <a href="#!helloAdmin/articles/{{article._id}}/edit" class="btn btn-danger">Update</a>
+                     <a href="#" class="btn btn-default">View published</a>
+                  </div>
+               </div>
+               <div class="form-group">
+                  <div class="form-group opt-box col-md-12">
+                     <!-- <h3 class="main-title">Timeshare details</h3> -->
+                     <div class="">
+                        <h4>{{article.title}}</h4>
+                        {{article.category}}  |   {{article.province}}
+                        <p>
+                           {{article.discription}}
+                        </p>
                         <hr/>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <div class="image-display">
+                           <strong class="note">{{article.images.length}} image(s) uploaded</strong>
+                           <div data-ng-repeat="image in article.images">
+                              <img ng-src="{{image}}" class="images img-thumbnail">  
+                           </div>
+                        </div>
+                        <hr/>
+                        <div class="attractions-display col-md-5">
+                           <strong>Attractions</strong>
+                           <div data-ng-repeat="attraction in article.attractions">
+                              {{attraction}}  
+                           </div>
 
-<script>
-         $("#menu-toggle").click(function(e) {
-           e.preventDefault();
-             $("#wrapper").toggleClass("toggled");
-         });
-      </script>
-    
+                           <strong>Nearby</strong>
+                            <Br/>{{article.nearby}}  
+                        </div>
+                        <div class="col-md-7 office-use">
+                          <p class="alert alert-danger">ADMIN OFFICE USE ONLY:</p>
+                          <span class="label label-warning"> Status | {{article.availability}}</span>
+                          <span class="label label-danger">Timeshare is {{article.verify}}</span>
+
+                          <p> Purchase type <strong>{{article.purchase}}</strong>
+                              <br/> {{article.price}}
+                              <br/> Stay date from <strong>{{article.datemin}}</strong> till <strong>{{article.datemax}}</strong>
+                              <br/> 
+                          </p>
+                        </div>
+                        <hr/>
+                     </div>
+                     
+                  </div>
+               </div>
+               <!-- <ul class="nav nav-tabs" id="myTab">
+                  <li class="active">
+                      <a data-target="#overview" data-toggle="tab"><strong data-ng-bind="article.title"></strong></a>
+                  </li>
+                  </ul>
+                  
+                  <div class="tab-content">
+                      <div class="tab-pane active" id="overview">
+                     <div data-ng-show="authentication.user._id == article.creator._id">
+                  <a href="/#!/articles/{{article._id}}/edit">edit</a>
+                  <a href="#" data-ng-click="delete();">delete</a>
+                  </div>
+                  <small>
+                  <em>Posted on</em>
+                  <em data-ng-bind="article.created | date:'mediumDate'"></em>
+                  <em>by</em>
+                  <em data-ng-bind="article.creator.fullName"></em>
+                  </small>
+                  <p data-ng-bind="article.content"></p> -->
+            </div>
+         </div>
+         <!-- Show the editing buttons to the article creator -->
+         <hr/>
+         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+      </div>
+   </div>
+   </div>
+   </div>
+   </div>
+   <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+   </script>
 </section>

@@ -108,9 +108,20 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$routePa
             } else {
             	// Otherwise, use the article '$remove' method to delete the article
                 $scope.article.$remove(function() {
-                    $location.path('articles');
+                    $location.path('#!helloAdmin/articles');
                 });
             }
         };
     }
 ]);
+
+
+
+
+
+
+
+
+
+
+

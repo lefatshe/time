@@ -1,27 +1,160 @@
 <!-- The edit article view -->
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<h1>Edit Article</h1>
-	<!-- The edited article form -->
-	<form data-ng-submit="update()" novalidate>
-		<div>
-			<label for="title">Title</label>
-			<div>
-				<input type="text" data-ng-model="article.title" id="title" placeholder="Title" required>
-			</div>
-		</div>
-		<div>
-			<label for="content">Content</label>
-			<div>
-				<textarea data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
-			</div>
-		</div>
-		<div>
-			<input type="submit" value="Update">
-		</div>
-		<!-- The error message element -->
-		<div data-ng-show="error">
-			<strong data-ng-bind="error"></strong>
-		</div>
-	</form>
-	</div>
+   <nav ng-include="'example/views/navbar.client.view.html'"></nav>
+   <div id="wrapper" >
+      <!-- Sidebar -->
+      <section ng-include="'example/views/sidebar.client.view.html'"></section>
+      <div id="page-content-wrapper">
+         <div class="container-fluid">
+            <div class="row">
+               <h1 class="main-titles">Edit Timeshare</h1>
+               <div class="tabs-wrap">
+                  <ul class="nav nav-tabs" role="tablist">
+                     <li role="presentation" class="active">
+                        <a class="alert alert-warning" href="#discriptions" aria-controls="discriptions" role="tab" data-toggle="tab" aria-expanded="true">Office Use</a>
+                     </li>
+                     <li role="presentation" class="active">
+                        <a href="#discriptions" aria-controls="discriptions" role="tab" data-toggle="tab" aria-expanded="true">
+                              <select class="form-control" data-ng-model="article.availability">
+                                              <option  value="" disabled selected>Select purchase status</option>
+                                               <option value="Availabile">Availabile</option>
+                                               <option value="Ordered">Ordered</option>      
+                                            </select>
+                        </a>
+                     </li>
+                     <li role="presentation" class="active">
+                        <a href="#discriptions" aria-controls="discriptions" role="tab" data-toggle="tab" aria-expanded="true">
+                              <select class="form-control" data-ng-model="article.verify">
+                                                <option  value="" disabled selected>Verification</option>
+                                                   <option value="Verified">Verified</option>
+                                                   <option value="Pendinding">Pendinding</option>
+                                              </select>
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+               <form data-ng-submit="update()" novalidate>
+                  <div class="form-group">
+                     <strong class="col-md-12">Discriptions<hr/></strong>
+                     <div class="col-md-4">
+                        Title 
+                        <input class="form-control" type="text" data-ng-model="article.title" id="title" placeholder="Title" required>
+                     </div>
+                     <div class="col-md-4">
+                        Select catergory
+                        <select class="form-control" data-ng-model="article.category">
+                           <option value="" disabled selected>Choose Timeshare catergory</option>
+                           <option value="Top Attractions">Top Attractions</option>
+                           <option value="Adventures">Adventures</option>
+                           Top Attractions 
+                           <option value="Beaches">Beaches</option>
+                           <option value="Family Holidays">Family Holidays</option>
+                           <option value="Country Places">Country Places</option>
+                           <option value="Cultural Heritage">Cultural Heritage</option>
+                           <option value="Exciting Cities">Exciting Cities</option>
+                           <option value="Heritage Sites">Heritage Sites</option>
+                        </select>
+                     </div>
+                     <div class="col-md-4">
+                        Select province
+                        <select class="form-control" data-ng-model="article.province">
+                           <option value="" disabled selected>Select Timeshare Province</option>
+                           <option value="Eastern Cape">Eastern Cape</option>
+                           <option value="Free State">Free State</option>
+                           <option value="Gauteng">Gauteng</option>
+                           <option value="Kwazulu-Natal">Kwazulu-Natal</option>
+                           <option value="Limpopo">Limpopo</option>
+                           <option value="North West">North West</option>
+                           <option value="Northern Cape">Northern Cape</option>
+                           <option value="Western cape">Western Cape</option>
+                        </select>
+                     </div>
+                     <div class="col-md-12 row-follow">
+                           <textarea class="form-control" data-ng-model="article.discription" id="content" cols="30" rows="10" placeholder="Provide of the timeshare discription"></textarea>
+                     </div>
+                  </div>
+
+                  <div class="form-group">
+                     <strong class="col-md-12">Images<hr/></strong>
+                     <div class="col-md-12">
+                           <p class="alert alert-danger">You will be able to update images as soon as Dashboard item "Upload Media" is created; Given below is list of ulpoaded images URI - cautiously edit (separate with "," comma).
+                              <br/>
+                           <input class="form-control" type="text" ng-list="," data-ng-model="article.images"  id="uploaded-img" placeholder="Image(s) URI provided">
+                        </p>
+                     </div>
+                  </div>
+
+                  <div class="form-group col-md-12">  
+                     <div class="col-md-6">
+                        <strong>Attractions<hr/></strong>
+                           <textarea cols="30" rows="5" class="form-control" ng-list="," data-ng-model="article.attractions"  placeholder=""></textarea>
+                     </div>
+                     <div class="col-md-6">
+                        <strong>Nearby<hr/></strong>
+                           <textarea cols="30" rows="5" class="form-control" ng-list="," data-ng-model="article.nearby"  placeholder=""></textarea>
+                     </div>
+                  </div>
+
+
+                  <div class="form-group">
+                     <strong class="col-md-12">Pricing<hr/></strong>
+                     <div class="col-md-4">
+                        Type of purchase
+                        <select class="form-control" data-ng-model="article.purchase">
+                           <option value="" disabled selected>Type of timeshare purchase</option>
+                           <option value="Rental">Rental</option>
+                           <option value="Buy">Buy</option>
+                        </select>
+                     </div>
+                     <div class="col-md-4">
+                        Bedrooms
+                        <select class="form-control" data-ng-model="article.bedrooms">
+                           <option  value="" disabled selected>Bedrooms</option>
+                           <option value="1">1 Bedroom</option>
+                           <option value="2">2 Bedroom</option>
+                           <option value="3">3 Bedroom</option>
+                           <option value="4">4 Bedroom</option>
+                           <option value="5">5 Bedroom</option>  
+                           <option value="6">more than 5</option>        
+                        </select>
+                     </div>
+                     <div class="col-md-4">
+                        Price
+                        <input class="form-control" type="text" data-ng-model="article.price" id="title" placeholder="Price" required>
+                     </div>
+                     <div class="col-md-12 row-follow">
+                                      <label class="col-md-2" for="from">Stay date from</label>
+                                        <div class="col-md-4">
+                                          <input placeholder="From" class="col-md-4 form-control" data-ng-model="article.datemin" type="text" id="from" name="from">
+                                        </div>
+
+                                      <label class="col-md-2" for="to">Till date to</label>
+                                        <div class="col-md-4">
+                                          <input placeholder="To" class="form-control" data-ng-model="article.datemax" type="text" id="to" name="to">
+                                        </div>
+                                   </div>
+
+                  </div>
+
+
+
+
+
+
+
+                  <!-- The error message element -->
+                  <div data-ng-show="error">
+                     <strong data-ng-bind="error"></strong>
+                  </div>
+
+                  <div class="col-md-12 row-follow">
+                     <hr/>
+                     <input type="submit" value="Update" class="pull-right  btn btn-danger">
+                  </div>
+                  
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>

@@ -108,16 +108,23 @@
 	   </div>
 
 
-		<div class="col-md-8" data-ng-repeat="article in articles">
+	   <div class="timeshare-grid col-md-8">
+		<div class="article" data-ng-repeat="article in articles">
 			<div class="form-group row a-timeshare-item">
-				<img ng-src="{{article.images}}" class="img-responsive"> 
-				<div class="info">
-					
-      				
-					<!-- <strong> {{ article.title }} </strong>
-					<br> {{ article.province }}
-					<br> {{ article.price }} -->
-				</div>
+				<img ng-src="{{article.images[0]}}" class="images img-thumbnail"> 
+					<div class="info">
+						<h4 class="thumbtitle"> {{ article.title }} </h4>
+						<br> {{ article.province }}
+						<br> {{ article.price }}
+						<br> Appriciated 0%<br/>
+						<span class="label label-danger">{{ article.availability }}</span>
+						
+					</div>
+					<div class="cntrl-btn pull-right">
+						<!-- <a href="#" data-ng-click="delete();" class="btn btn-primary">Delete</a>
+						<a href="articles/{{article._id}}/edit" class="btn btn-danger">Update</a> -->
+						<a href="#!helloAdmin/articles/{{ article._id }}" class="btn btn-default">View item</a>
+					</div>
 			</div>
 
 			
@@ -132,6 +139,7 @@
 		         <p data-ng-bind="article.content"></p>
 		      </li>
 		   </ul> -->
+		</div>
 		</div>
    </div>
 

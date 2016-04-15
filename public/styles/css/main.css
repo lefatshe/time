@@ -1,3 +1,50 @@
+.images.img-thumbnail{
+    width:200px;
+    float:left;
+        margin-right: 10px;
+}
+.center{
+    text-align: center;
+}
+h4.thumbtitle {
+    margin: 0px !important;
+}
+.timeshare-grid {
+    height: 550px;
+    overflow-x: scroll;
+}
+span.status{
+    background: #DDD;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: 1px solid #CCC;
+    font-size: 12px;
+}
+
+.office-use {
+    border-left: 1px solid #CCC;
+    /* overflow: hidden; */
+}
+
+.image-display {
+    background: #efefef;
+    overflow: hidden;
+    padding: 10px;
+}
+
+h4.ng-binding {
+    margin: 0px !important;
+}
+
+.user-name {
+        background: #808080;
+    border-radius: 4px;
+    color: #000 !important;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
 .main-titles {
     font-family: 'Roboto', sans-serif;
 }

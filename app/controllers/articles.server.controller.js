@@ -64,9 +64,26 @@ exports.update = function(req, res) {
 	// Get the article from the 'request' object
 	var article = req.article;
 
-	// Update the article fields
-	article.title = req.body.title;
-	article.content = req.body.content;
+		// Update the article fields
+		article.title = req.body.title;
+		article.category = req.body.category;
+		article.province = req.body.province;
+		article.discription = req.body.discription;
+		//images
+		article.images = req.body.images;
+		// attractions
+		article.attractions = req.body.attractions;
+		article.nearby = req.body.nearby;
+		// purchase price & discription
+		article.purchase = req.body.purchase;
+		article.price = req.body.price;
+		article.bedrooms = req.body.bedrooms;
+		article.datemin = req.body.datemin;
+		article.datemax = req.body.datemax;
+		// action timehare
+		article.availability = req.body.availability;
+		article.verify = req.body.verify;
+
 
 	// Try saving the updated article
 	article.save(function(err) {
