@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('customer').service("customerService", function ($http, $q, $resource){
+angular.module('customer').service("customerService", function ($http, $q){
 	var deferred = $q.defer();
 
 	$http.get('/api/articles/').then(function (data){
@@ -12,13 +12,6 @@ angular.module('customer').service("customerService", function ($http, $q, $reso
 
 	this.getTimeshares = function (){
 		return deferred.promise;
-		return $resource('api/articles/:articleId', {
-	        articleId: '@_id'
-	    }, {
-	        update: {
-	            method: 'PUT'
-	        }
-	    });
 	}
 	
 });
