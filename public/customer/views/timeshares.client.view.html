@@ -1,0 +1,48 @@
+<div class="jumbotron jumbotron-home">
+  <div class="container-responsive">
+
+  <div class="container text-center">
+        <h1 class="main">The Leader in Buying and Selling<br/> of Pre-Owned Vacations</h1>
+        <div class="row search-bg">
+                      <ul class="nav nav-tabs" id="home-main-tab">
+                        <li class="active"><a data-target="#home" data-toggle="tab">Buy</a></li>
+                        <li><a data-target="#rental" data-toggle="tab">Rental</a></li>
+                        <li><a data-target="#" data-toggle="tab">+ Sell</a></li>
+                      </ul>
+
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="home">
+                        	<p class="form-group generic-search">
+                            	<input class="form-control  input-lg" placeholder="filter by province" type="text" data-ng-model="search.province">
+                            </p>
+                        </div>
+
+                        <div class="tab-pane" id="rental">Rental</div>
+                        <div class="tab-pane" id="sell">Sell</div>
+                      </div>
+        </div>
+  </div>
+
+
+  </div>
+</div>
+
+<div id="timeshares" data-ng-controller="CustomerController" class="container">
+	<div class="row serach-result">
+        	<div class="col-md-3 timeshare" data-ng-repeat="timeshare in timeshares | filter:search | orderBy:'date' | limitTo: 10">
+        				<img ng-src="{{timeshare.images[0]}}" class="images img-thumbnail">
+        				<div class="label">
+        					<span class="label label-danger">{{ timeshare.verify }}</span>
+        					<span class="label">{{ timeshare.province }}</span>
+        				</div>
+        				<p class="info">
+							<strong><a href="/welcomeCustomer/{{timeshare._id}}">{{timeshare.title}}</a></strong>
+							<hr/>
+							<div class="price">
+								<span>{{timeshare.price}}</a></span>
+							</div>
+						</p>
+
+			</div>
+      </div>
+</div>

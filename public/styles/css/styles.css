@@ -1,0 +1,159 @@
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,.8);
+}
+.label {
+    margin-left: 4px;
+}
+
+.price span {
+    background: #efefef;
+    padding: 10px 20px;
+}
+
+#timeshares .price{
+    text-align: center;
+}
+
+
+#timeshares .info {
+    /* margin-top: -30px; */
+    text-align: center;
+    margin: 20px 0px 10px 0px;
+    background-color: rgba(255,255,255,.8);
+    /* border: 1px solid; */
+}
+
+img.images.img-thumbnail {
+    min-height: 200px;
+    margin-bottom: -30px;
+}
+
+.generic-search {
+    padding: 20px 30px;
+}
+
+
+
+#timeshares {
+    margin-top: 60px;
+}
+.timeshare {
+        margin-bottom: 60px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,.8);
+}
+
+ul#home-main-tab li {
+    padding: 5px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+ul#home-main-tab li a{
+        border: 0px solid #ddd !important;
+}
+
+ul#home-main-tab li.active a{
+     background:#383838;
+     color:white;
+}
+
+a {
+    color: #383838;
+    text-decoration: none;
+}
+
+.search-bg {
+    overflow: hidden;
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid #CCC;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 4px;
+
+    width: 440px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.main {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 46px !important;
+}
+
+
+.jumbotron-home{
+        background-image: url("../../images/background-hero.jpg");
+            min-height: 430px;
+            
+                margin-bottom: 0px !important;
+}
+
+.navbar-brand {
+    padding: 0 !important;
+
+}
+
+/*.navbar-toggle {    background-color: #383838 !important;}*/
+
+
+#login-dp .help-block{
+    font-size:12px    
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,.8);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.btn-fb{
+    color: #fff;
+    background-color:#3b5998;
+}
+.btn-fb:hover{
+    color: #fff;
+    background-color:#496ebc 
+}
+.btn-tw{
+    color: #fff;
+    background-color:#55acee;
+}
+.btn-tw:hover{
+    color: #fff;
+    background-color:#59b5fa;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
+
+
+.navbar {
+    position: relative;
+    z-index: 3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0,0,0,0.075);
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
