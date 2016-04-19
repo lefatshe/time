@@ -6,6 +6,9 @@ angular.module('customer').config(['$routeProvider',
 		}).
 		otherwise({
 			redirectTo: '/welcomeCustomer'
+		}).
+		when('/timeshares', {
+			templateUrl: 'customer/views/Atimeshare.client.view.html'
 		});
 	}
 ]); 

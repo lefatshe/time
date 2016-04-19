@@ -84,6 +84,13 @@ a {
     font-size: 46px !important;
 }
 
+.jumbotron-view{
+        background-image: url("../../images/background-hero-blur.jpg");
+            min-height: 430px;
+            
+                margin-bottom: 0px !important;
+}
+
 
 .jumbotron-home{
         background-image: url("../../images/background-hero.jpg");
