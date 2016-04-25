@@ -4,7 +4,7 @@ angular.module('customer').config(['$routeProvider',
 		when('/welcomeCustomer', {
 			templateUrl: 'customer/views/timeshares.client.view.html'
 		}).
-		when('/timeshares/:itemId', {
+		when('/welcomeCustomer/timeshares/:articleId', {
 			templateUrl: 'customer/views/Atimeshare.client.view.html'
 		}).
 		otherwise({

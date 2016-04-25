@@ -37,7 +37,10 @@
         					<span class="label">{{ timeshare.province }}</span>
         				</div>
         		<p class="info">
-							<strong><a ng-click="view">{{timeshare.title}}</a></strong>
+							<strong>
+                <a href="/index.html#!/welcomeCustomer/timeshares/{{ timeshare._id }}"  class="btn btn-default">{{timeshare.title}}</a>
+               <!--  <a href="/timeshares/{{timeshare._id}}" ng-click="getAtimeshare(articleId)">{{timeshare.title}}</a> -->
+              </strong>
 							<hr/>
 							<div class="price">
 								<span>{{timeshare.price}}</a></span>
