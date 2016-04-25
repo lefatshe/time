@@ -29,20 +29,21 @@
 
 <div id="timeshares" data-ng-controller="CustomerController" class="container">
 	<div class="row serach-result">
+    
         	<div class="col-md-3 timeshare" data-ng-repeat="timeshare in timeshares | filter:search | orderBy:'date' | limitTo: 10">
         				<img ng-src="{{timeshare.images[0]}}" class="images img-thumbnail">
         				<div class="label">
         					<span class="label label-danger">{{ timeshare.verify }}</span>
         					<span class="label">{{ timeshare.province }}</span>
         				</div>
-        				<p class="info">
-							<strong><a href="index.html#!/timeshares">{{timeshare.title}}</a></strong>
+        		<p class="info">
+							<strong><a ng-click="view">{{timeshare.title}}</a></strong>
 							<hr/>
 							<div class="price">
 								<span>{{timeshare.price}}</a></span>
 							</div>
 						</p>
-
-			</div>
+          </div>
+       
       </div>
 </div>
