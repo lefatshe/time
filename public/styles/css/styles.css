@@ -17,6 +17,26 @@
     text-align: center;
 }
 
+/* view  Timeshare */
+
+.timeshare-imgs img{
+    
+}
+
+div#images {
+    background: #efefef;
+    overflow: hidden;
+    padding: 10px;
+    height:240px;
+}
+
+div#images span{
+    width: 200px;
+    height: 310px;
+    overflow-y: hidden;
+    float:left;
+}
+
 
 #timeshares .info {
     /* margin-top: -30px; */
@@ -31,14 +51,34 @@ img.images.img-thumbnail {
     margin-bottom: -30px;
 }
 
+.tab-pane.filter-search {
+    padding: 20px;
+}
+
 .generic-search {
-    padding: 20px 30px;
+    padding: 5px 10px;
 }
 
 
+.pricing-opt {
+    border: 1px solid #efefef;
+    padding: 10px;
+}
+
+.text-centered{
+    text-align: center;
+}
+
+
+.pricing {
+    text-align: center;
+    background: #efefef;
+    padding: 20px;
+    margin-bottom: 0px !important
+}
 
 #timeshares {
-    margin-top: 60px;
+    margin-top: 20px;
 }
 .timeshare {
         margin-bottom: 60px;
@@ -47,19 +87,45 @@ img.images.img-thumbnail {
 }
 
 ul#home-main-tab li {
-    padding: 5px;
-    font-size: 22px;
+        padding: 6px;
     cursor: pointer;
 }
 
-ul#home-main-tab li a{
-        border: 0px solid #ddd !important;
-}
+
 
 ul#home-main-tab li.active a{
-     background:#383838;
-     color:white;
+
 }
+
+a.sell {
+    background-color: red;
+    color: #FFF;
+    border-color: #ebccd1;
+}
+
+.note a{
+    color: red
+}
+
+.note {
+    padding: 10PX;
+    border: 1px solid #CCC;
+    margin: 10px;
+}
+
+a.find {
+    background-color: #5cb85c;
+    color: #FFF;
+    
+}
+
+
+
+
+.nav-tabs  li  a{
+    border-radius: 4px !important;
+}
+
 
 a {
     color: #383838;
@@ -75,13 +141,45 @@ a {
 
     width: 440px;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .main {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
-    font-size: 46px !important;
+    font-size: 42px !important;
+}
+
+small.tag {
+    display: block;
+    clear: both;
+    overflow: hidden;
+    margin: 10px 0px;
+}   
+
+.tab-content.time-view {
+    height: 320px;
+    border: 1px solid #CCC;
+    border-top: 0px solid #CCC !important;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+div#body {
+    padding: 0px 0px;
+}
+
+.purchase{
+    border: 1px solid #efefef;
+    box-shadow: 0 0 18px #ccc;
+}
+
+.main-sub {
+        font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 32px !important;
+    margin: 0px !important;
+    color: #808080;
 }
 
 .jumbotron-view{

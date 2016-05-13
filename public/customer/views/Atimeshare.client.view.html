@@ -1,8 +1,62 @@
 
 
-<div id="Atimeshare" data-ng-controller="CustomerController" class="container" data-ng-init="getAtimeshare()">
-	<div class="jumbotron">
-		<h1>{{timeshare.title}}</h3>
-		<!-- {{timeshare.title}} -->
-	</div>
+<div id="Atimeshare" data-ng-controller="CustomerController" data-ng-init="getAtimeshare()" class="container">
+	<small class="tag">
+		<span class='pull-left'><a href="#">go back home</a></span>
+		<span class='pull-right'>Posted {{timeshare.created}}</span>
+	</small>
+	
+	<h1 class="main">{{timeshare.title}}</h1>
+	<h3 class="main-sub">{{timeshare.price}}</h3>
+    <hr/>
+
+	<div id="images" class="box">
+		<span ng-repeat="image in timeshare.images" class="timeshare-imgs">
+	            <img ng-src="{{image}}" width="320px" height="220px">
+    	</span>
+    </div>
+
+    <div id="body" class="group">
+		<span class="col-md-8">
+	            <h3>At the Resort</h3>
+	            <p>{{timeshare.discription}}</p>
+
+	         <ul class="nav nav-tabs" id="myTab">
+			  <li class="active"><a data-target="#home" data-toggle="tab">Attractions</a></li>
+			  <li><a data-target="#profile" data-toggle="tab">Nearby</a></li>
+			  <li><a data-target="#messages" data-toggle="tab">Location</a></li>
+			</ul>
+
+			<div class="tab-content time-view">
+			  <div class="tab-pane active" id="home">
+			  		{{timeshare.attractions}}
+			  </div>
+
+			  <div class="tab-pane" id="profile">
+			  		{{timeshare.nearby}}
+			  </div>
+
+			  <div class="tab-pane" id="messages">
+			  		{{ timeshare.province }}
+			  </div>
+			</div>
+
+
+
+    	</span>
+
+    	<span class="col-md-4">
+	           <h3 class="pricing">Purchase</h3>
+	           <div class="pricing-opt">
+	           	<strong>Unit</strong>
+	           	<br/>{{timeshare.purchase}} 
+	           	<br/>{{timeshare.bedrooms}} bedrooms
+	           	<p></p>
+	           	<strong>Week available</strong>
+	           	<br/>from -{{timeshare.datemin}} 
+	           	<br/>to -{{timeshare.datemax}} 
+	           </div>
+    	</span>
+    </div>
+
 </div>

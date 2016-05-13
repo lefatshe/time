@@ -1,52 +1,185 @@
-<div class="jumbotron jumbotron-home">
-  <div class="container-responsive">
+<div class="jumbotron-home">
+   <div class="container-responsive">
+      <div class="container text-center">
+         <h1 class="main">The Leader in Buying and Selling<br/> of Pre-Owned Vacations</h1>
+         <div class="row search-bg">
+            <ul class="nav nav-tabs" id="home-main-tab">
 
-  <div class="container text-center">
-        <h1 class="main">The Leader in Buying and Selling<br/> of Pre-Owned Vacations</h1>
-        <div class="row search-bg">
-                      <ul class="nav nav-tabs" id="home-main-tab">
-                        <li class="active"><a data-target="#home" data-toggle="tab">Buy</a></li>
-                        <li><a data-target="#rental" data-toggle="tab">Rental</a></li>
-                        <li><a data-target="#" data-toggle="tab">+ Sell</a></li>
-                      </ul>
+               <li class="active search col-md-6">
+                  <a data-target="#home" class="find" data-toggle="tab">
+                     <i class="glyphicon glyphicon-search"></i> Find Vacation
+                  </a>
+               </li>
 
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                        	<p class="form-group generic-search">
-                            	<input class="form-control  input-lg" placeholder="filter by province" type="text" data-ng-model="search.province">
-                            </p>
-                        </div>
+              <!--  <li><a data-target="#rental" data-toggle="tab">Buy to Own</a></li> -->
+               <li class="pull-right col-md-6">
+                  <a data-target="#sell" class="sell" data-toggle="tab">
+                     <i class="glyphicon glyphicon-plus-sign"></i> List Vacation
+                  </a>
+               </li>
+            </ul>
+            <div class="tab-content">
 
-                        <div class="tab-pane" id="rental">Rental</div>
-                        <div class="tab-pane" id="sell">Sell</div>
-                      </div>
-        </div>
-  </div>
+               <div class="tab-pane filter-search active" id="home">
+                  <div class="generic-search">
+                     <select class="form-control input-lg"  data-ng-model="search.category">
+                        <option value="" disabled selected>Choose Catergory</option>
+                        <option value="">All Available</option>
+                        <option value="Top Attractions">Top Attractions</option>
+                        <option value="Adventures">Adventures</option>
+                        Top Attractions 
+                        <option value="Beaches">Beaches</option>
+                        <option value="Family Holidays">Family Holidays</option>
+                        <option value="Country Places">Country Places</option>
+                        <option value="Cultural Heritage">Cultural Heritage</option>
+                        <option value="Exciting Cities">Exciting Cities</option>
+                        <option value="Heritage Sites">Heritage Sites</option>
+                     </select>
+                  </div>
+                  <div class="generic-search">
+                     <select class="form-control  input-lg" placeholder="Filter by Province" type="select" data-ng-model="search.province">
+                        <option value="" disabled selected>Select search by province</option>
+                        <option value="">All Available</option>
+                        <option value="Kwazulu-Natal">Kwazulu-Natal</option>
+                        <option value="Free State">Free State</option>
+                        <option value="Eastern Cape">Eastern Cape</option>
+                        <option value="Gauteng">Gauteng</option>
+                        <option value="Limpopo">Limpopo</option>
+                        <option value="North West">North West</option>
+                        <option value="Northern Cape">Northern Cape</option>
+                        <option value="Western cape">Western Cape</option>
+                     </select>
+                  </div>
+                  <div class="generic-search">
+                     <input type="text"  class="form-control  input-lg" placeholder="e.g price R10 000,00" data-ng-model="search.price">
+                  </div>
+               </div>
 
 
-  </div>
-</div>
+               <!-- <div class="tab-pane" id="rental">Rental</div> -->
+               <div class="tab-pane" id="sell">
+                  <div class="note">
+                     <strong>Verified</strong><br/>
+                     Verified timeshare vactions are charged for verification process, and are presented prominatly on the site<br/>
+                     <a type="button" data-toggle="modal" data-target="#varified-modal">list verified</a>
+                  </div>
 
-<div id="timeshares" data-ng-controller="CustomerController" class="container">
-	<div class="row serach-result">
-    
-        	<div class="col-md-3 timeshare" data-ng-repeat="timeshare in timeshares | filter:search | orderBy:'date' | limitTo: 10">
-        				<img ng-src="{{timeshare.images[0]}}" class="images img-thumbnail">
-        				<div class="label">
-        					<span class="label label-danger">{{ timeshare.verify }}</span>
-        					<span class="label">{{ timeshare.province }}</span>
-        				</div>
-        		<p class="info">
-							<strong>
-                <a href="/index.html#!/welcomeCustomer/timeshares/{{ timeshare._id }}"  class="btn btn-default">{{timeshare.title}}</a>
-               <!--  <a href="/timeshares/{{timeshare._id}}" ng-click="getAtimeshare(articleId)">{{timeshare.title}}</a> -->
-              </strong>
-							<hr/>
-							<div class="price">
-								<span>{{timeshare.price}}</a></span>
-							</div>
-						</p>
-          </div>
-       
+                  <div class="note">
+                     <strong>Unverified</strong><br/>
+                     Unverified timeshare vactions are free, and will listed unverified<br/>
+                     <a type="button" data-toggle="modal" data-target="#non-varified-modal">list not verified</a>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
+   </div>
+</div>
+<div id="timeshares" data-ng-controller="CustomerController" class="container">
+
+
+   <div class="row serach-result">
+
+
+      <!-- Click here to view 
+      <button ng-click="search = {verify: 'Verified'}">Verified</button> |  
+      <button ng-click="search = {verify: 'Pendinding'}">NOT Verified</button> -->
+
+      <div class="col-md-3 timeshare" data-ng-repeat="timeshare in timeshares  | filter:search | orderBy: 'created'">
+         <img ng-src="{{timeshare.images[0]}}" class="images img-thumbnail">
+         <div class="label">
+            <span class="label label-danger">{{ timeshare.verify }}</span>
+            <span class="label">{{ timeshare.province }}</span>
+         </div>
+         <p class="info">
+            <strong>
+               <a href="/index.html#!/welcomeCustomer/timeshares/{{ timeshare._id }}">{{timeshare.title}}
+               </a>
+               <!--  <a href="/timeshares/{{timeshare._id}}" ng-click="getAtimeshare(articleId)">{{timeshare.title}}</a> -->
+            </strong>
+            <hr/>
+            <div class="price">
+               <span>{{timeshare.price}}</a></span>
+            </div>
+         </p>
+      </div>
+
+
+
+      <div ng-show="(timeshares | filter:search).length == 0">
+            <div class="alert alert-warning text-centered" role="alert"> 
+               <strong>Oh snap!</strong> 
+               Seems we are unable to find what you looking for, Change a few things up and try filter again.
+            </div>
+      </div>
+
+
+
+
+
+      
+   </div>
+
+
+   <!-- Modal for listing : Verified -->
+   <div id="varified-modal" class="modal fade" role="dialog">
+     <div class="modal-dialog row">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Verified Listing</h4>
+         </div>
+         <div class="modal-body">
+           <div class="form-group">
+             <label>Title</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+           </div>
+           <div class="form-group">
+             <label>Discription</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Discription">
+           </div>
+           <div class="form-group">
+             <label>Location</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Location">
+           </div>
+           <div class="form-group">
+             <label>Timeshare ID</label>
+             <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Timeshare ID">
+           </div>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-primary" >Submit</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>
+   <!-- Modal for listing : NOT Verified -->
+   <div id="non-varified-modal" class="modal fade" role="dialog">
+     <div class="modal-dialog row">
+
+       <!-- Modal content-->
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Non Verified Listing</h4>
+         </div>
+         <div class="modal-body">
+           <p>Some text in the modal.</p>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         </div>
+       </div>
+
+     </div>
+   </div>
+
+
+
+
+
 </div>
